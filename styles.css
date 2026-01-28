@@ -1,0 +1,182 @@
+/* Full-width retro layout with responsive text and proportional sections */
+:root {
+  --black: #000;
+  --green: #008000;
+  --blue: #0b1693;
+  --white: #fff;
+  --mono: "Lucida Console", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--black);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  color: var(--white);
+  overflow: hidden;
+}
+
+/* Screen fills viewport */
+.page-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top and bottom green bars: 20% each */
+.banner {
+  background: var(--green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.banner.top {
+  flex: 0 0 20%;
+}
+
+.banner.bottom {
+  flex: 0 0 20%;
+}
+
+/* Main title */
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Top meta (date/time) */
+.top-meta {
+  display: flex;
+  gap: 12px;
+  font-size: clamp(20px, 3vw, 36px);
+  font-weight: 700;
+}
+
+.top-date, .top-time {
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* Middle blue area */
+.blue-area {
+  flex: 1 1 auto; /* takes remaining space */
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  padding-left: 300px;  /* reduce from 400px to something smaller */
+  padding-right: 300px;
+  color: #fff;
+  font-family: var(--mono);
+}
+
+/* Top-center city/time/date */
+.top-center {
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 60px;
+}
+.middle-blocks {
+  display: flex;
+  justify-content: space-between; /* still keep them on opposite sides */
+  gap: 0px;
+}
+
+.left-block, .right-block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 20px);
+  max-width: 45%; /* prevents them from stretching too far apart */
+}
+
+
+/* Each label + value pair: label left, value right, same line */
+.label-value {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 5vw, 80px); /* adjust min/max gap as needed */
+  white-space: nowrap; /* keeps value on the same line */
+}
+
+/* Labels and values: same responsive font size */
+.label, .value, #conditions-summary, #conditions-details {
+  font-size: clamp(18px, 3vw, 36px);
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Bottom center: conditions summary + details */
+.bottom-center {
+  text-align: center;
+  margin-top: clamp(12px, 2vw, 20px);
+}
+
+.label-value.forecast-line {
+  white-space: normal; /* allow text to wrap */
+  gap: 20px;           /* adjust spacing if needed */
+  padding-top: 30px;
+}
+
+#conditions-summary, #conditions-details {
+  font-size: clamp(18px, 3vw, 36px);
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Footer ad and attribution */
+.ad {
+  font-size: clamp(24px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.attribution {
+  font-size: clamp(14px, 2vw, 30px);
+  font-weight: 700;
+}
+
+/* Small screens adjustments */
+@media (max-width: 420px) {
+  .blue-area {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .middle-blocks {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .label, .value, #conditions-summary, #conditions-details, .label-value {
+    font-size: 18px;
+  }
+
+  .ad {
+    font-size: 40px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}

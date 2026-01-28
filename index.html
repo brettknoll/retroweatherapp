@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Retro Weather Canada</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-wrap">
+    <div id="screen" class="screen">
+      
+      <!-- Top green banner -->
+      <header class="banner top">
+        <div class="title">RETRO WEATHER WEATHER</div>
+        <div class="top-meta">
+          <span id="top-date" class="top-date">---- --- --</span>
+          <span id="top-time" class="top-time">--:--:--</span>
+        </div>
+      </header>
+
+      <!-- Middle blue area -->
+      <div class="blue-area">
+
+        <!-- Top-center city/time/date -->
+        <div id="city-time" class="top-center">WINNIPEG 9 AM CST JAN 28 2026</div>
+
+        <!-- Middle blocks: left/right -->
+        <div class="middle-blocks">
+
+            <!-- Left block -->
+            <div class="left-block">
+            <div class="label-value">
+                <span class="label">TEMP</span>
+                <span id="temperature" class="value">-- C</span>
+            </div>
+            <div class="label-value">
+                <span class="label">HUM</span>
+                <span id="humidity" class="value">-- %</span>
+            </div>
+            <div class="label-value">
+                <span class="label">VSBY</span>
+                <span id="visibility" class="value">-- KM</span>
+            </div>
+            <div class="label-value">
+                <span class="label">FORECAST</span>
+                <span id="forecast" class="value">LOADING...</span>
+            </div>
+            </div>
+
+            <!-- Right block -->
+            <div class="right-block">
+            <div class="label-value">
+                <span class="label">WIND</span>
+                <span id="wind" class="value">-- KMH</span>
+            </div>
+            <div class="label-value">
+                <span class="label">FOG</span>
+                <span id="fog" class="value">—</span>
+            </div>
+            <div class="label-value">
+                <span class="label">WIND CHILL</span>
+                <span id="feelslike" class="value">--</span>
+            </div>
+            </div>
+
+        </div> <!-- /middle-blocks -->
+
+        <!-- Bottom center: conditions summary + details -->
+        <div class="bottom-center">
+            <div id="conditions-summary">SUNNY</div>
+            <div id="conditions-details">ICE FOG PATCHES</div>
+        </div>
+      </div> <!-- /blue-area -->
+
+      <!-- Bottom green banner -->
+      <footer class="banner bottom">
+        <div class="attribution">WEATHER DATA © ENVIRONMENT CANADA</div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
