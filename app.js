@@ -29,30 +29,28 @@
 
   const GEO_MET_URL = 'https://api.weather.gc.ca/collections/observations/items?f=json&station_id=s0000193';
 
-  async function fetchWeatherData() {
+    async function fetchWeatherData() {
     try {
-      const res = await fetch(GEO_MET_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error('Bad response ' + res.status);
-      const json = await res.json();
-      // latest observation is first item
-      const obs = json.features[0]?.properties;
-      if (!obs) throw new Error('No observation data');
-      return {
-        city: 'WINNIPEG',
-        temperature_c: obs.temperature?.value ?? null,
-        wind_direction: obs.windDirection?.value ?? null,
-        wind_speed_kmh: obs.windSpeed?.value ?? null,
-        humidity: obs.humidity?.value ?? null,
-        visibility_km: obs.visibility?.value ?? null,
-        wind_chill: obs.windChill?.value ?? null,
-        forecast_text: obs.textSummary ?? null,
-        observation_time: obs.dateTime ?? new Date().toISOString()
-      };
+        const res = await fetch('/api/weather'); // <- fetch your Vercel API
+        if (!res.ok) throw new Error('Bad response ' + res.status);
+        const json = await res.json();
+        return {
+        city: json.city ?? 'WINNIPEG',
+        temperature_c: json.temperature_c ?? null,
+        wind_direction: json.wind_direction ?? null,
+        wind_speed_kmh: json.wind_speed_kmh ?? null,
+        humidity: json.humidity ?? null,
+        visibility_km: json.visibility_km ?? null,
+        wind_chill: json.wind_chill ?? null,
+        forecast_text: json.forecast_text ?? null,
+        observation_time: json.observation_time ?? new Date().toISOString()
+        };
     } catch (err) {
-      console.error('GeoMet fetch failed', err);
-      return null;
+        console.error('Weather fetch failed', err);
+        return null;
     }
-  }
+    }
+
 
   function formatTemp(c) {
     return Number.isFinite(c) ? `${c >= 0 ? '+' : ''}${c} C` : '-- C';
